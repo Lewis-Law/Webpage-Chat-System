@@ -74,4 +74,21 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  //Create Group
+  newGroupName: string;
+  groupObj: any = { };
+  createGroup(event) {
+    event.preventDefault();
+    if (this.newGroupName != undefined && this.newGroupName.trim() != '') {
+      this.groupObj = { groupname: this.newGroupName };
+      console.log(this.groupObj);
+      this.httpClient.post(this.apiURL + 'group/create', JSON.stringify(this.groupObj), httpOptions)
+        .subscribe((data: any) => {
+          console.log(data);
+        });
+    } else {
+      alert('Field is empty')
+    }
+  }
+
 }
