@@ -154,4 +154,27 @@ export class AdminComponent implements OnInit {
       alert('Empty field(s)')
     }
   }
+
+  //delete user from group
+  selectedUser4: string;
+  selectedGroup5: string;
+  deleteUserFromGroup(event) {
+    event.preventDefault();
+    if (this.selectedUser4 != undefined && this.selectedGroup5 != undefined) {
+      this.groupObj = { groupname: this.selectedGroup5, username: this.selectedUser4 };
+      this.httpClient.post(this.apiURL + 'group/deleteUser', JSON.stringify(this.groupObj), httpOptions)
+        .subscribe((data: any) => {
+        console.log(data);
+        if (data == true) {
+          alert('User removed from group!')
+          window.location.reload();
+        } else {
+          alert('User does not exist in group')
+        }
+      });
+    } else {
+      alert('Empty field(s)')
+    }
+  }
+
 }
