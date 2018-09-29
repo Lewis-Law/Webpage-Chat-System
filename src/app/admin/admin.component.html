@@ -108,14 +108,14 @@
       <form (submit)="deleteChannel($event)">
         Group:
         <select [(ngModel)]="selectedGroup7" name="selectedGroup7" id="selectedGroup7" required>
-          <option *ngFor="let group of channelArr2" [value]="group.group">{{group.group}}</option>
+          <option *ngFor="let group of groupArr" [value]="group.GroupName">{{group.GroupName}}</option>
         </select>
         <ng-container *ngIf="selectedGroup7">
-          <ng-container *ngFor="let group of channelArr2">
-            <ng-container *ngIf="group.group == selectedGroup7">
+          <ng-container *ngFor="let group of groupArr">
+            <ng-container *ngIf="group.GroupName == selectedGroup7">
               Channel:
               <select [(ngModel)]="selectedChannel2" name="selectedChannel2" id="selectedChannel2" required>
-                <option *ngFor="let channel of group.channel" [value]="channel.name">{{channel.name}}</option>
+                <option *ngFor="let channel of group.Channel" [value]="channel.name">{{channel.name}}</option>
               </select>
             </ng-container>
           </ng-container>
@@ -134,14 +134,14 @@
         </select>
         Group:
         <select [(ngModel)]="selectedGroup4" name="selectedGroup4" id="selectedGroup4" required>
-          <option *ngFor="let group of channelArr2" [value]="group.group">{{group.group}}</option>
+          <option *ngFor="let group of groupArr" [value]="group.GroupName">{{group.GroupName}}</option>
         </select>
         <ng-container *ngIf="selectedGroup4">
-          <ng-container *ngFor="let group of channelArr2">
-            <ng-container *ngIf="group.group == selectedGroup4">
+          <ng-container *ngFor="let group of groupArr">
+            <ng-container *ngIf="group.GroupName == selectedGroup4">
               Channel:
               <select [(ngModel)]="selectedChannel" name="selectedChannel" id="selectedChannel" required>
-                <option *ngFor="let channel of group.channel" [value]="channel.name">{{channel.name}}</option>
+                <option *ngFor="let channel of group.Channel" [value]="channel.name">{{channel.name}}</option>
               </select>
             </ng-container>
           </ng-container>

@@ -202,4 +202,50 @@ export class AdminComponent implements OnInit {
       alert('Field is empty')
     }
   }
+
+  //delete channel
+  selectedGroup7: string;
+  selectedChannel2: string;
+  deleteChannel(event) {
+    event.preventDefault();
+    if (this.selectedChannel2 != undefined && this.selectedGroup7 != undefined) {
+      this.channelObj = { groupname: this.selectedGroup7, channelname: this.selectedChannel2 };
+      this.httpClient.post(this.apiURL + 'channel/delete', JSON.stringify(this.channelObj), httpOptions)
+        .subscribe((data: any) => {
+          console.log(data);
+        if (data == true) {
+          alert('Channel has been sucessfuly deleted!')
+          window.location.reload();
+        } else {
+          alert('An error has occured')
+        }
+      });
+    } else {
+      alert('Channel is not selected')
+    }
+  }
+
+  // add user to channel
+  selectedUser3: string;
+  selectedGroup4: string;
+  selectedChannel: string;
+  addUserToChannel(event) {
+    event.preventDefault();
+    if (this.selectedUser3 != undefined && this.selectedChannel != undefined && this.selectedGroup4 != undefined) {
+      this.channelObj = { groupname: this.selectedGroup4, channelname: this.selectedChannel, username: this.selectedUser3 };
+      this.httpClient.post(this.apiURL + 'channel/addUser', JSON.stringify(this.channelObj), httpOptions)
+        .subscribe((data: any) => {
+          console.log(data);
+        if (data == true) {
+          alert('User added to channel!')
+          window.location.reload();
+        } else {
+          alert('User already exist in channel')
+        }
+      });
+    } else {
+      alert('Empty field(s)');
+    }
+  }
+
 }
