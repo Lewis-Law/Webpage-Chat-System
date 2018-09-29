@@ -34,4 +34,7 @@ MongoClient.connect(url, { poolSize: 10 }, function (err, client) {
   require('./routes/group/readGroup.js')(app, db);
   require('./routes/group/addUserToGroup.js')(app, db);
   require('./routes/group/deleteUserFromGroup.js')(app, db);
+
+  //channels
+  require('./routes/channel/createChannel')(app, db);
 });

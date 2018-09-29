@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   availableRoles = [];
   availableUsers = [];
   availableGroups = [];
+  groupArr = [];
   constructor(private router: Router, private form: FormsModule, private httpClient: HttpClient) { }
   private apiURL = 'http://localhost:3000/api/';
   ngOnInit() {
@@ -30,6 +31,8 @@ export class AdminComponent implements OnInit {
       });
     this.httpClient.get(this.apiURL + 'group/read')
       .subscribe((data: any) => {
+        this.groupArr = data;
+        console.log(this.groupArr);
         for (var i = 0; i < data.length; i++) {
           this.availableGroups.push(data[i].GroupName);
           //console.log(data[i].GroupName);
@@ -177,4 +180,26 @@ export class AdminComponent implements OnInit {
     }
   }
 
+  //create channel
+  selectedGroup3: string;
+  newChannelName: string;
+  channelObj: any = {};
+  createChannel(event) {
+    event.preventDefault();
+    if (this.selectedGroup3 != undefined && this.newChannelName != undefined && this.newChannelName.trim() != '') {
+      this.channelObj = { groupname: this.selectedGroup3, channelname: this.newChannelName };
+      this.httpClient.post(this.apiURL + 'channel/create', JSON.stringify(this.channelObj), httpOptions)
+      .subscribe((data: any) => {
+        console.log(data);
+        if (data == true) {
+          alert('Channel has been sucessfuly created!')
+          window.location.reload();
+        } else {
+          alert('Error, Channel already exist.')
+        }
+      });
+    } else {
+      alert('Field is empty')
+    }
+  }
 }
