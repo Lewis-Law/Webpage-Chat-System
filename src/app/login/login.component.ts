@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     this.userObj = { username: this.username, password: this.password };
     console.log(this.userObj);
-    this.httpClient.post(this.apiURL + 'auth', JSON.stringify(this.userObj), httpOptions)
+    this.httpClient.post(this.apiURL + 'user/auth', JSON.stringify(this.userObj), httpOptions)
       .subscribe((data: any) => {
         console.log(data.success);
       });

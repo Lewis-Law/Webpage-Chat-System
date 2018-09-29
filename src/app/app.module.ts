@@ -7,12 +7,18 @@ import { LoginComponent } from './login/login.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AccountDetailsComponent } from './account-details/account-details.component';
+import { ChatComponent } from './chat/chat.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MenuComponent
+    MenuComponent,
+    AccountDetailsComponent,
+    ChatComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 module.exports = function (app, db) {
-  app.post('/api/auth', (req, res) => {
+  app.post('/api/user/auth', (req, res) => {
     const assert = require('assert');
     
     var uname = req.body.username.toString();

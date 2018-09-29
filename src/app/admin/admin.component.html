@@ -1,0 +1,179 @@
+<body>
+  <div class="user">
+    <h1>User</h1>
+    <div>
+      <p>Create a New User</p>
+      <form (submit)="createUser($event)">
+        <input type="text" placeholder="Username" [(ngModel)]='newUsername' name="newUsername" id="newUsername" required class="userInput" />
+        <br />
+        <input type="password" placeholder="Password" [(ngModel)]="newPassword" name="newPassword" id="newpassword" required class="userInput" />
+        <br />
+        <input type="email" placeholder="Email" [(ngModel)]='newEmail' name="newEmail" id="newEmail" required class="userInput" />
+        <br />
+        Role:
+        <select [(ngModel)]="newRole" name="newRole" id="newRole" required>
+          <option *ngFor="let newRole of availableRoles" [value]="newRole">{{newRole}}</option>
+        </select>
+        <button type="submit">Create</button>
+      </form>
+    </div>
+    <br />
+    <div>
+      <p>Delete an Existing User</p>
+      <form (submit)="deleteUser($event)">
+        User:
+        <select [(ngModel)]="selectedUser" name="selectedUser" id="selectedUser" required>
+          <option *ngFor="let selectedUser of availableUsers" [value]="selectedUser">{{selectedUser}}</option>
+        </select>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+  <br />
+  <div class="group">
+    <h1>Group</h1>
+    <div>
+      <p>Create a Group</p>
+      <form (submit)="createGroup($event)">
+        <input type="email" placeholder="Group Name" [(ngModel)]='newGroupName' name="newGroupName" id="newGroupName" required />
+        <button type="submit">Create</button>
+      </form>
+    </div>
+    <br>
+    <div>
+      <p>Delete a Group</p>
+      <form (submit)="deleteGroup($event)">
+        Group:
+        <select [(ngModel)]="selectedGroup2" name="selectedGroup2" id="selectedGroup2" required>
+          <option *ngFor="let selectedGroup2 of groupArr" [value]="selectedGroup2">{{selectedGroup2}}</option>
+        </select>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+    <br>
+    <div>
+      <p>Add Existing User to Group</p>
+      <form (submit)="addUserToGroup($event)">
+        User:
+        <select [(ngModel)]="selectedUser2" name="selectedUser2" id="selectedUser2" required>
+          <option *ngFor="let selectedUser2 of userArr" [value]="selectedUser2">{{selectedUser2}}</option>
+        </select>
+        Group:
+        <select [(ngModel)]="selectedGroup" name="selectedGroup" id="selectedGroup" required>
+          <option *ngFor="let selectedGroup of groupArr" [value]="selectedGroup">{{selectedGroup}}</option>
+        </select>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+    <br>
+    <div>
+      <p>Remove User From Group</p>
+      <form (submit)="deleteUserFromGroup($event)">
+        User:
+        <select [(ngModel)]="selectedUser4" name="selectedUser4" id="selectedUser4" required>
+          <option *ngFor="let selectedUser4 of userArr" [value]="selectedUser4">{{selectedUser4}}</option>
+        </select>
+        Group:
+        <select [(ngModel)]="selectedGroup5" name="selectedGroup5" id="selectedGroup5" required>
+          <option *ngFor="let selectedGroup5 of groupArr" [value]="selectedGroup5">{{selectedGroup5}}</option>
+        </select>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+  <br>
+  <div class="channel">
+    <h1>Channel</h1>
+    <div>
+      <p>Create a Channel</p>
+      <form (submit)="createChannel($event)">
+        Group:
+        <select [(ngModel)]="selectedGroup3" name="selectedGroup3" id="selectedGroup3" required>
+          <option *ngFor="let selectedGroup3 of groupArr" [value]="selectedGroup3">{{selectedGroup3}}</option>
+        </select>
+        Channel:
+        <input type="email" placeholder="Channel Name" [(ngModel)]='newChannelName' name="newChannelName" id="newChannelName" required class="channelInput" />
+        <button type="submit">Create</button>
+      </form>
+    </div>
+    <br>
+    <div>
+      <p>Delete a Channel</p>
+      <form (submit)="deleteChannel($event)">
+        Group:
+        <select [(ngModel)]="selectedGroup7" name="selectedGroup7" id="selectedGroup7" required>
+          <option *ngFor="let group of channelArr2" [value]="group.group">{{group.group}}</option>
+        </select>
+        <ng-container *ngIf="selectedGroup7">
+          <ng-container *ngFor="let group of channelArr2">
+            <ng-container *ngIf="group.group == selectedGroup7">
+              Channel:
+              <select [(ngModel)]="selectedChannel2" name="selectedChannel2" id="selectedChannel2" required>
+                <option *ngFor="let channel of group.channel" [value]="channel.name">{{channel.name}}</option>
+              </select>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+    <br>
+
+    <div>
+      <p>Add Existing User to Channel</p>
+      <form (submit)="addUserToChannel($event)">
+        User:
+        <select [(ngModel)]="selectedUser3" name="selectedUser3" id="selectedUser3" required>
+          <option *ngFor="let selectedUser3 of userArr" [value]="selectedUser3">{{selectedUser3}}</option>
+        </select>
+        Group:
+        <select [(ngModel)]="selectedGroup4" name="selectedGroup4" id="selectedGroup4" required>
+          <option *ngFor="let group of channelArr2" [value]="group.group">{{group.group}}</option>
+        </select>
+        <ng-container *ngIf="selectedGroup4">
+          <ng-container *ngFor="let group of channelArr2">
+            <ng-container *ngIf="group.group == selectedGroup4">
+              Channel:
+              <select [(ngModel)]="selectedChannel" name="selectedChannel" id="selectedChannel" required>
+                <option *ngFor="let channel of group.channel" [value]="channel.name">{{channel.name}}</option>
+              </select>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+    <br />
+
+    <div>
+      <p>Remove User from Channel</p>
+      <form (submit)="deleteUserFromChannel($event)">
+        User:
+        <select [(ngModel)]="selectedUser5" name="selectedUser5" id="selectedUser5" required>
+          <option *ngFor="let selectedUser5 of userArr" [value]="selectedUser5">{{selectedUser5}}</option>
+        </select>
+        Group:
+        <select [(ngModel)]="selectedGroup6" name="selectedGroup6" id="selectedGroup6" required>
+          <option *ngFor="let group of channelArr2" [value]="group.group">{{group.group}}</option>
+        </select>
+        <ng-container *ngIf="selectedGroup6">
+          <ng-container *ngFor="let group of channelArr2">
+            <ng-container *ngIf="group.group == selectedGroup6">
+              Channel:
+              <select [(ngModel)]="selectedChannel3" name="selectedChannel3" id="selectedChannel3" required>
+                <option *ngFor="let channel of group.channel" [value]="channel.name">{{channel.name}}</option>
+              </select>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </div>
+
+
+</body>
+
+<body *ngIf="!admin">
+  User does not have admin rights
+</body>

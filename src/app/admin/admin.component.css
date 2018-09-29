@@ -1,0 +1,58 @@
+.user {
+  background-color: grey;
+  flex: 1;
+  margin-left: 10px;
+  padding: 10px;
+  border: solid 3px black;
+}
+
+.group {
+  background-color: greenyellow;
+  flex: 1;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 10px;
+  border: solid 3px black;
+}
+
+.channel {
+  background-color: cornflowerblue;
+  flex: 1;
+  margin-right: 10px;
+  padding: 10px;
+  border: solid 3px black;
+}
+
+body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button {
+  margin-left: 5px;
+}
+
+input {
+  margin: 2px;
+}
+
+p {
+  font-weight: bold;
+  margin-bottom: 1px;
+}
+
+select {
+  padding: 2px;
+}
+
+div {
+  font-size: 16px;
+}
+
+.userInput {
+  width: 223px;
+}
+
+.channelInput {
+  width: 180px;
+}
