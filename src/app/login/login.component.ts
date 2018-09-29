@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     console.log(this.userObj);
     this.httpClient.post(this.apiURL + 'auth', JSON.stringify(this.userObj), httpOptions)
       .subscribe((data: any) => {
-        console.log(data);
+        console.log(data.success);
       });
   }
 
