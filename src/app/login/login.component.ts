@@ -28,7 +28,10 @@ export class LoginComponent implements OnInit {
     console.log(this.userObj);
     this.httpClient.post(this.apiURL + 'user/auth', JSON.stringify(this.userObj), httpOptions)
       .subscribe((data: any) => {
-        console.log(data.success);
+        if (data.success == true) {
+          sessionStorage.setItem('username', this.username);
+          this.router.navigateByUrl('/account');
+        }
       });
   }
 
