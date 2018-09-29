@@ -24,16 +24,17 @@ export class AdminComponent implements OnInit {
       .subscribe((data: any) => {
         for (var i = 0; i < data.length; i++) {
           this.availableUsers.push(data[i].username);
-          console.log(data[i].username);
-          console.log(this.availableUsers);
+          //console.log(data[i].username);
+          //console.log(this.availableUsers);
         }
       });
     this.httpClient.get(this.apiURL + 'group/read')
       .subscribe((data: any) => {
         for (var i = 0; i < data.length; i++) {
           this.availableGroups.push(data[i].GroupName);
-          console.log(data[i].GroupName);
-          console.log(this.availableGroups);
+          //console.log(data[i].GroupName);
+          //console.log(this.availableGroups);
+          //console.log(data[i].User);
         }
       });
     
@@ -55,8 +56,12 @@ export class AdminComponent implements OnInit {
       this.httpClient.post(this.apiURL + 'user/reg', JSON.stringify(this.userObj), httpOptions)
         .subscribe((data: any) => {
           console.log(data);
-          alert('User has been sucessfuly created!');
-          window.location.reload();
+          if (data == true) {
+            alert('User has been sucessfuly created!');
+            window.location.reload();
+          } else {
+            alert('User already exist');
+          }
         });
     } else {
       alert('Field(s) is/are empty')
@@ -111,8 +116,8 @@ export class AdminComponent implements OnInit {
     event.preventDefault();
     console.log(this.selectedGroup2);
     if (this.selectedGroup2 != undefined) {
-      this.userObj = { groupname: this.selectedGroup2 };
-      this.httpClient.post(this.apiURL + 'group/delete', JSON.stringify(this.userObj), httpOptions)
+      this.groupObj = { groupname: this.selectedGroup2 };
+      this.httpClient.post(this.apiURL + 'group/delete', JSON.stringify(this.groupObj), httpOptions)
         .subscribe((data: any) => {
           if (data == true) {
             alert('Group has been sucessfuly deleted!');
@@ -124,6 +129,29 @@ export class AdminComponent implements OnInit {
         });
     } else {
       alert('User is not selected');
+    }
+  }
+
+  // add user to group
+  selectedUser2: string;
+  selectedGroup: string;
+  data4: any = {};
+  addUserToGroup(event) {
+    event.preventDefault();
+    if (this.selectedUser2 != undefined && this.selectedGroup != undefined) {
+      this.groupObj = { groupname: this.selectedGroup, username: this.selectedUser2 };
+      this.httpClient.post(this.apiURL + 'group/addUser', JSON.stringify(this.groupObj), httpOptions)
+        .subscribe((data: any) => {
+          console.log(data);
+          if (data == true) {
+            alert('User added to group!')
+            window.location.reload();
+          } else {
+            alert('User already exist in group')
+          }
+        });
+    } else {
+      alert('Empty field(s)')
     }
   }
 }
