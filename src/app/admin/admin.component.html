@@ -160,14 +160,14 @@
         </select>
         Group:
         <select [(ngModel)]="selectedGroup6" name="selectedGroup6" id="selectedGroup6" required>
-          <option *ngFor="let group of channelArr2" [value]="group.group">{{group.group}}</option>
+          <option *ngFor="let group of groupArr" [value]="group.GroupName">{{group.GroupName}}</option>
         </select>
         <ng-container *ngIf="selectedGroup6">
-          <ng-container *ngFor="let group of channelArr2">
-            <ng-container *ngIf="group.group == selectedGroup6">
+          <ng-container *ngFor="let group of groupArr">
+            <ng-container *ngIf="group.GroupName == selectedGroup6">
               Channel:
               <select [(ngModel)]="selectedChannel3" name="selectedChannel3" id="selectedChannel3" required>
-                <option *ngFor="let channel of group.channel" [value]="channel.name">{{channel.name}}</option>
+                <option *ngFor="let channel of group.Channel" [value]="channel.name">{{channel.name}}</option>
               </select>
             </ng-container>
           </ng-container>

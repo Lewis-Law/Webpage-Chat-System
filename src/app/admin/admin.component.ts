@@ -248,4 +248,28 @@ export class AdminComponent implements OnInit {
     }
   }
 
+
+  // delete user from channel
+  selectedUser5: string;
+  selectedGroup6: string;
+  selectedChannel3: string;
+  deleteUserFromChannel(event) {
+    event.preventDefault();
+    if (this.selectedUser5 != undefined && this.selectedChannel3 != undefined && this.selectedGroup6 != undefined) {
+      this.channelObj = { groupname: this.selectedGroup6, channelname: this.selectedChannel3, username: this.selectedUser5 };
+      this.httpClient.post(this.apiURL + 'channel/deleteUser', JSON.stringify(this.channelObj), httpOptions)
+        .subscribe((data: any) => {
+          console.log(data);
+          if (data == true) {
+          alert('User removed from channel!')
+          window.location.reload();
+        } else {
+          alert('User does not exist in channel')
+        }
+      });
+    } else {
+      alert('Empty field(s)');
+    }
+  }
+
 }
