@@ -12,7 +12,6 @@ module.exports = function (app, db) {
       for (i = 0; i < result[0].Channel.length; i++) {
         if (result[0].Channel[i].name == cname) {
           for (j = 0; j < result[0].Channel[i].user.length; j++) {
-            console.log('loop a');
             if (result[0].Channel[i].user[j] == uname) {
               console.log('user already exist in channel');
               UserInChannel = true;
@@ -21,10 +20,8 @@ module.exports = function (app, db) {
           }
           
           if (UserInChannel == false) {
-            console.log('loop b');
             var newresult = result[0].Channel;
             newresult[i].user.push(uname);
-            console.log('new result loop')
             break;
           }
         } 
