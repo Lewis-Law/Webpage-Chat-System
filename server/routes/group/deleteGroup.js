@@ -1,22 +1,24 @@
 module.exports = function (app, db) {
-  app.post('/api/group/create', (req, res) => {
+  app.post('/api/group/delete', (req, res) => {
     var gname = req.body.groupname;
-    var myobj = { GroupName: gname, User: [], Channel: [] };
     var isGroup = 0;
 
-    var query = { GroupName:gname };
+
+    // search if group exist
+    var query = { GroupName: gname };
     db.collection('groups').find(query).toArray(function (err, result) {
+      console.log(query);
       if (err) throw err;
-      console.log(result.length);
       isGroup = result.length;
-      if (isGroup == 0) {
-        db.collection('groups').insertOne(myobj, function (err, result2) {
+      console.log(isGroup);
+      if (isGroup == 1) {
+        db.collection("groups").deleteOne(query, function (err, obj) {
           if (err) throw err;
-          console.log(result2);
+          console.log("Group deleted");
           res.send(true);
         });
       } else {
-        console.log(isGroup);
+        console.log("isGroup is not 1");
         res.send(false);
       }
     });

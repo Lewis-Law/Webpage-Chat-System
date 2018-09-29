@@ -45,7 +45,7 @@
       <form (submit)="deleteGroup($event)">
         Group:
         <select [(ngModel)]="selectedGroup2" name="selectedGroup2" id="selectedGroup2" required>
-          <option *ngFor="let selectedGroup2 of groupArr" [value]="selectedGroup2">{{selectedGroup2}}</option>
+          <option *ngFor="let selectedGroup2 of availableGroups" [value]="selectedGroup2">{{selectedGroup2}}</option>
         </select>
         <button type="submit">Delete</button>
       </form>
