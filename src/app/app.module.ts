@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AccountDetailsComponent } from './account-details/account-details.component';
 import { ChatComponent } from './chat/chat.component';
 import { AdminComponent } from './admin/admin.component';
+import { SocketService } from './services/socket/socket.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,6 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '../dist/chat/')));
 require('./listen.js')(http);
+require('./sockets.js')(app, io);
+require('./routes.js')(app, path);
 
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
@@ -18,9 +20,7 @@ MongoClient.connect(url, { poolSize: 10 }, function (err, client) {
   if (err) { return console.log(err) }
   const dbName = 'users';
   const db = client.db(dbName);
-  require('./routes/create.js')(app, db);
-  require('./routes/remove.js')(app, db);
-  require('./routes/update.js')(app, db);
+  //require('./routes/create.js')(app, db);
   require('./routes/read.js')(app, db);
   // users
   require('./routes/user/registerUser.js')(app, db);
