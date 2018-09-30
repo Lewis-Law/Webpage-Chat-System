@@ -1,4 +1,4 @@
-<body>
+<body *ngIf="admin">
   <div class="user">
     <h1>User</h1>
     <div>
@@ -18,7 +18,7 @@
       </form>
     </div>
     <br />
-    <div>
+    <div *ngIf="superAdmin">
       <p>Delete an Existing User</p>
       <form (submit)="deleteUser($event)">
         User:

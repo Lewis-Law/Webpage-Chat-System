@@ -17,10 +17,38 @@ export class AdminComponent implements OnInit {
   availableUsers = [];
   availableGroups = [];
   groupArr = [];
+
+  // login validation check
+  role: string;
+  admin: boolean;
+  superAdmin: boolean;
   constructor(private router: Router, private form: FormsModule, private httpClient: HttpClient) { }
   private apiURL = 'http://localhost:3000/api/';
   ngOnInit() {
-    this.availableRoles = ['user', 'groupAdmin', 'superAdmin'];
+    //determine if user logged in
+    if (!sessionStorage.getItem('username')) {
+      console.log('Not validated');
+      sessionStorage.clear();
+      alert("User not logged in");
+      this.router.navigateByUrl('login');
+    } else {
+      this.role = sessionStorage.getItem('role');
+      // determine if admin
+      if (this.role == 'groupAdmin' || this.role == 'superAdmin') {
+        this.admin = true;
+      } else {
+        this.admin = false;
+      }
+
+      // determine super or group admin
+      if (this.role == 'groupAdmin') {
+        this.availableRoles = ['user', 'groupAdmin'];
+        this.superAdmin = false;
+      } else if (this.role == 'superAdmin') {
+        this.availableRoles = ['user', 'groupAdmin', 'superAdmin'];
+        this.superAdmin = true;
+      }
+    }
     this.httpClient.get(this.apiURL + 'user/read')
       .subscribe((data: any) => {
         for (var i = 0; i < data.length; i++) {

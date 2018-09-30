@@ -21,18 +21,36 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
-  userObj: any = { };
+  userObj: any = {};
+
+  role: string;
   loginUser(event) {
     event.preventDefault();
-    this.userObj = { username: this.username, password: this.password };
-    console.log(this.userObj);
-    this.httpClient.post(this.apiURL + 'user/auth', JSON.stringify(this.userObj), httpOptions)
-      .subscribe((data: any) => {
-        if (data.success == true) {
-          sessionStorage.setItem('username', this.username);
-          this.router.navigateByUrl('/account');
-        }
-      });
+    if (this.username != undefined && this.username.trim() != '' && this.password != undefined && this.password.trim() != '') {
+      this.userObj = { username: this.username, password: this.password };
+      console.log(this.userObj);
+      this.httpClient.post(this.apiURL + 'user/auth', JSON.stringify(this.userObj), httpOptions)
+        .subscribe((data: any) => {
+          if (data.success == true) {
+            sessionStorage.setItem('username', this.username);
+            this.httpClient.get(this.apiURL + 'user/read')
+              .subscribe((data: any) => {
+                for (var i = 0; i < data.length; i++) {
+                  if (data[i].username == this.username) {
+                    this.role = data[i].role;
+                    console.log(this.role);
+                    sessionStorage.setItem('role', this.role);
+                    this.router.navigateByUrl('/account');
+                  }
+                }
+              });
+          } else {
+            alert('Incorrect Username/Password')
+          }
+        });
+    } else {
+      alert('Empty Field(s)!')
+    }
   }
 
 }
