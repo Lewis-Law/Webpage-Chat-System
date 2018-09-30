@@ -1,11 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\server\\routes",
+    "\\server\\routes\\channel",
+    "\\server\\routes\\group",
+    "\\server\\routes\\user",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\login",
-    "\\src\\app\\menu"
+    "\\src\\app\\account-details",
+    "\\src\\app\\admin",
+    "\\src\\app\\login"
   ],
-  "SelectedNode": "\\src\\app\\login\\login.component.ts",
+  "SelectedNode": "\\src\\app\\account-details\\account-details.component.html",
   "PreviewInSolutionExplorer": false
 }

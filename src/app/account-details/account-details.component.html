@@ -1,3 +1,5 @@
-<p>
-  account-details works!
-</p>
+<h2>Welcome {{username}}</h2>
+<p>Role: {{userArr.role}}</p>
+<p>Email: {{userArr.email}}</p>
+<p>Groups And Channels</p>
+<p *ngFor="let elements of detailArr">{{elements}}</p>

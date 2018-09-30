@@ -128,10 +128,6 @@
     <div>
       <p>Add Existing User to Channel</p>
       <form (submit)="addUserToChannel($event)">
-        User:
-        <select [(ngModel)]="selectedUser3" name="selectedUser3" id="selectedUser3" required>
-          <option *ngFor="let selectedUser3 of availableUsers" [value]="selectedUser3">{{selectedUser3}}</option>
-        </select>
         Group:
         <select [(ngModel)]="selectedGroup4" name="selectedGroup4" id="selectedGroup4" required>
           <option *ngFor="let group of groupArr" [value]="group.GroupName">{{group.GroupName}}</option>
@@ -146,6 +142,16 @@
             </ng-container>
           </ng-container>
         </ng-container>
+        <ng-container *ngIf="selectedGroup4">
+          <ng-container *ngFor="let group of groupArr">
+              <ng-container *ngIf="group.GroupName == selectedGroup4">
+                User:
+                <select [(ngModel)]="selectedUser3" name="selectedUser3" id="selectedUser3" required>
+                  <option *ngFor="let user of group.User" [value]="user">{{user}}</option>
+                </select>
+            </ng-container>
+          </ng-container>
+        </ng-container>
         <button type="submit">Add</button>
       </form>
     </div>
@@ -154,10 +160,6 @@
     <div>
       <p>Remove User from Channel</p>
       <form (submit)="deleteUserFromChannel($event)">
-        User:
-        <select [(ngModel)]="selectedUser5" name="selectedUser5" id="selectedUser5" required>
-          <option *ngFor="let selectedUser5 of availableUsers" [value]="selectedUser5">{{selectedUser5}}</option>
-        </select>
         Group:
         <select [(ngModel)]="selectedGroup6" name="selectedGroup6" id="selectedGroup6" required>
           <option *ngFor="let group of groupArr" [value]="group.GroupName">{{group.GroupName}}</option>
@@ -169,6 +171,20 @@
               <select [(ngModel)]="selectedChannel3" name="selectedChannel3" id="selectedChannel3" required>
                 <option *ngFor="let channel of group.Channel" [value]="channel.name">{{channel.name}}</option>
               </select>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="selectedChannel3">
+          <ng-container *ngFor="let group of groupArr">
+            <ng-container *ngIf="group.GroupName == selectedGroup6">
+              <ng-container *ngFor="let channel of group.Channel">
+                <ng-container *ngIf="channel.name == selectedChannel3">
+                  User:
+                  <select [(ngModel)]="selectedUser5" name="selectedUser5" id="selectedUser5" required>
+                    <option *ngFor="let user of channel.user" [value]="user">{{user}}</option>
+                  </select>
+                </ng-container>
+              </ng-container>
             </ng-container>
           </ng-container>
         </ng-container>
