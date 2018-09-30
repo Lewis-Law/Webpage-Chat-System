@@ -11,6 +11,7 @@ import { AccountDetailsComponent } from './account-details/account-details.compo
 import { ChatComponent } from './chat/chat.component';
 import { AdminComponent } from './admin/admin.component';
 import { SocketService } from './services/socket/socket.service';
+import { ImagesComponent } from './images/images.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SocketService } from './services/socket/socket.service';
     MenuComponent,
     AccountDetailsComponent,
     ChatComponent,
-    AdminComponent
+    AdminComponent,
+    ImagesComponent
   ],
   imports: [
     BrowserModule,

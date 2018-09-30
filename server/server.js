@@ -6,6 +6,7 @@ const io = require('socket.io')(http);
 const bodyParser = require('body-parser');
 const fs = require('fs');
 var cors = require('cors');
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -13,7 +14,14 @@ app.use(express.static(path.join(__dirname, '../dist/chat/')));
 require('./listen.js')(http);
 require('./sockets.js')(app, io);
 require('./routes.js')(app, path);
+// image
+const formidable = require('formidable');
+//app.use(express.static(path.join(__dirname, '../dist/imageupload/')));
+app.use('/images', express.static(path.join(__dirname, './userimages')));
+require('./routes/image/upload.js')(app, formidable);
 
+
+//mongoDB
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://localhost:27017';
 MongoClient.connect(url, { poolSize: 10 }, function (err, client) {
