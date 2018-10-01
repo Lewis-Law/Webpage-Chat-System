@@ -105,8 +105,23 @@ module.exports = {
     return { 'errors': err };
   },
 
-  // Delete Channel
+  // Add user to Channel
   addUserToChannel: function (gname, cname, uname) {
+    let err = [];
+    if (gname == "" || gname == undefined || gname == null) {
+      err.push('Group Name is not defined')
+    }
+    if (cname == "" || cname == undefined || cname == null) {
+      err.push('Channel Name is not defined')
+    }
+    if (uname == "" || uname == undefined || uname == null) {
+      err.push('Username is not defined')
+    }
+    return { 'errors': err };
+  },
+
+    // Delete user from Channel
+  deleteUserFromChannel: function (gname, cname, uname) {
     let err = [];
     if (gname == "" || gname == undefined || gname == null) {
       err.push('Group Name is not defined')
