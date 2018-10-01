@@ -6,6 +6,7 @@ const io = require('socket.io')(http);
 const bodyParser = require('body-parser');
 const fs = require('fs');
 var cors = require('cors');
+const helpers = require('./includes/helpers.js');
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -31,7 +32,7 @@ MongoClient.connect(url, { poolSize: 10 }, function (err, client) {
   //require('./routes/create.js')(app, db);
   require('./routes/read.js')(app, db);
   // users
-  require('./routes/user/registerUser.js')(app, db);
+  require('./routes/user/registerUser.js')(app, db, helpers);
   require('./routes/user/deleteUser.js')(app, db);
   require('./routes/user/readUser.js')(app, db);
   require('./routes/user/authUser.js')(app, db);

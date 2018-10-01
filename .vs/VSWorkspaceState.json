@@ -1,16 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\server",
     "\\server\\routes",
-    "\\server\\routes\\channel",
-    "\\server\\routes\\group",
     "\\server\\routes\\user",
+    "\\server\\userimages",
     "\\src",
     "\\src\\app",
-    "\\src\\app\\account-details",
-    "\\src\\app\\admin",
-    "\\src\\app\\login"
+    "\\src\\app\\admin"
   ],
-  "SelectedNode": "\\src\\app\\account-details\\account-details.component.html",
   "PreviewInSolutionExplorer": false
 }
