@@ -2,12 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\server",
-    "\\server\\routes",
     "\\server\\routes\\user",
-    "\\server\\userimages",
-    "\\src",
+    "\\server\\unitTest",
     "\\src\\app",
     "\\src\\app\\admin"
   ],
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }
