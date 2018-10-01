@@ -152,3 +152,24 @@ describe('Create Channel Function - Missing data param 2', function () {
     assert.equal(helpers.createChannel("a", null).errors[0], 'Channel Name is not defined');
   });
 });
+
+// Delete Channel
+describe('Delete Channel Function - Missing data param 1', function () {
+  it('null, "a" - should have one error message', function () {
+    assert.equal(helpers.deleteChannel(null, "a").errors.length, 1);
+  });
+  it('Error Message is - Group Name is not defined', function () {
+    assert.equal(helpers.deleteChannel(null, "a").errors[0], 'Group Name is not defined');
+  });
+});
+
+describe('Delete Channel Function - Missing data param 2', function () {
+  it('"a", null - should have one error message', function () {
+    assert.equal(helpers.deleteChannel("a", null).errors.length, 1);
+  });
+  it('Error Message is - Channel Name is not defined', function () {
+    assert.equal(helpers.deleteChannel("a", null).errors[0], 'Channel Name is not defined');
+  });
+});
+
+

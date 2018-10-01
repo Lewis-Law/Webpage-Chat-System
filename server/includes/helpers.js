@@ -91,6 +91,18 @@ module.exports = {
       err.push('Channel Name is not defined')
     }
     return { 'errors': err };
+  },
+
+  // Delete Channel
+  deleteChannel: function (gname, cname) {
+    let err = [];
+    if (gname == "" || gname == undefined || gname == null) {
+      err.push('Group Name is not defined')
+    }
+    if (cname == "" || cname == undefined || cname == null) {
+      err.push('Channel Name is not defined')
+    }
+    return { 'errors': err };
   }
 }
 
