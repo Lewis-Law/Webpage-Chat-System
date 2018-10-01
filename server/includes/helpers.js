@@ -67,6 +67,18 @@ module.exports = {
       err.push('Username is not defined')
     }
     return { 'errors': err };
+  },
+
+    // Delete User from Group
+  deleteUserFromGroup: function (gname, uname) {
+    let err = [];
+    if (gname == "" || gname == undefined || gname == null) {
+      err.push('Group Name is not defined')
+    }
+    if (uname == "" || uname == undefined || uname == null) {
+      err.push('Username is not defined')
+    }
+    return { 'errors': err };
   }
 }
 

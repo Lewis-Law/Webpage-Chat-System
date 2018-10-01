@@ -114,3 +114,22 @@ describe('Add user to Group Function - Missing data param 2', function () {
     assert.equal(helpers.addUserToGroup("a", null).errors[0], 'Username is not defined');
   });
 });
+
+// Delete User from Group
+describe('Delete User from Group Function - Missing data param 1', function () {
+  it('null, "a" - should have one error message', function () {
+    assert.equal(helpers.deleteUserFromGroup(null, "a").errors.length, 1);
+  });
+  it('Error Message is - Group Name is not defined', function () {
+    assert.equal(helpers.deleteUserFromGroup(null, "a").errors[0], 'Group Name is not defined');
+  });
+});
+
+describe('Delete User from Group Function - Missing data param 2', function () {
+  it('"a", null - should have one error message', function () {
+    assert.equal(helpers.deleteUserFromGroup("a", null).errors.length, 1);
+  });
+  it('Error Message is - Username is not defined', function () {
+    assert.equal(helpers.deleteUserFromGroup("a", null).errors[0], 'Username is not defined');
+  });
+});
