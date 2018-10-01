@@ -1,11 +1,11 @@
-module.exports = function (app, db) {
+module.exports = function (app, db,helpers) {
   app.post('/api/channel/deleteUser', (req, res) => {
     var gname = req.body.groupname;
     var cname = req.body.channelname;
     var uname = req.body.username;
     var UserInChannel = false;
     var valid = null;
-    valid = helpers.deleteUserFromGroup(gname, cname, uname);
+    valid = helpers.deleteUserFromChannel(gname, cname, uname);
     if (valid.errors.length == 0) {
       var myquery = { GroupName: gname };
       db.collection('groups').find(myquery).toArray(function (err, result) {

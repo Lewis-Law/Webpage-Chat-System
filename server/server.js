@@ -48,5 +48,5 @@ MongoClient.connect(url, { poolSize: 10 }, function (err, client) {
   require('./routes/channel/createChannel')(app, db, helpers);
   require('./routes/channel/deleteChannel')(app, db, helpers);
   require('./routes/channel/addUserToChannel.js')(app, db, helpers);
-  require('./routes/channel/deleteUserFromChannel.js')(app, db);
+  require('./routes/channel/deleteUserFromChannel.js')(app, db, helpers);
 });
