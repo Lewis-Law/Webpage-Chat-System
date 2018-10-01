@@ -1,4 +1,4 @@
-module.exports = function (app, db) {
+module.exports = function (app, db, helpers) {
   app.post('/api/channel/addUser', (req, res) => {
     var gname = req.body.groupname;
     var cname = req.body.channelname;
