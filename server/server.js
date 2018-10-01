@@ -39,7 +39,7 @@ MongoClient.connect(url, { poolSize: 10 }, function (err, client) {
 
   // groups
   require('./routes/group/createGroup.js')(app, db, helpers);
-  require('./routes/group/deleteGroup.js')(app, db);
+  require('./routes/group/deleteGroup.js')(app, db, helpers);
   require('./routes/group/readGroup.js')(app, db);
   require('./routes/group/addUserToGroup.js')(app, db);
   require('./routes/group/deleteUserFromGroup.js')(app, db);
