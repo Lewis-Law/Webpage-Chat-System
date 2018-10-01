@@ -25,5 +25,17 @@ module.exports = {
       err.push('Name is not defined')
     }
     return { 'errors': err };
+  },
+
+  // Auth User
+  auth: function (uname, upwd) {
+    let err = [];
+    if (uname == "" || uname == undefined || uname == null) {
+      err.push('Name is not defined')
+    }
+    if (upwd == "" || upwd == undefined || upwd == null) {
+      err.push('Password is not defined')
+    }
+    return { 'errors': err };
   }
 }

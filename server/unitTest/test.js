@@ -57,3 +57,21 @@ describe('Delete User Function - Missing data param 1', function () {
   });
 });
 
+//Auth User
+describe('Auth User Function - Missing data param 1', function () {
+  it('null, "a" - should have one error message', function () {
+    assert.equal(helpers.auth(null, "a").errors.length, 1);
+  });
+  it('Error Message is - Name is not defined', function () {
+    assert.equal(helpers.auth(null, "a").errors[0], 'Name is not defined');
+  });
+});
+
+describe('Auth User Function - Missing data param 2', function () {
+  it('"a", null - should have one error message', function () {
+    assert.equal(helpers.auth("a", null).errors.length, 1);
+  });
+  it('Error Message is - Password is not defined', function () {
+    assert.equal(helpers.auth("a", null).errors[0], 'Password is not defined');
+  });
+});
