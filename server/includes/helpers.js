@@ -38,8 +38,18 @@ module.exports = {
     }
     return { 'errors': err };
   },
+
   // Create Group
   createGroup: function (gname) {
+    let err = [];
+    if (gname == "" || gname == undefined || gname == null) {
+      err.push('Group Name is not defined')
+    }
+    return { 'errors': err };
+  },
+
+    // Delete Group
+  deleteGroup: function (gname) {
     let err = [];
     if (gname == "" || gname == undefined || gname == null) {
       err.push('Group Name is not defined')
