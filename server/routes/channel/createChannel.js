@@ -1,36 +1,41 @@
-module.exports = function (app, db) {
+module.exports = function (app, db, helpers) {
   app.post('/api/channel/create', (req, res) => {
     var gname = req.body.groupname;
     var cname = req.body.channelname;
     var ChannelInGroup = false;
+    var valid = null;
+    valid = helpers.createChannel(gname, cname);
+    if (valid.errors.length == 0) {
+      var myquery = { GroupName: gname };
+      db.collection('groups').find(myquery).toArray(function (err, result) {
+        if (err) throw err;
+        console.log("cname: " + cname);
 
-    var myquery = { GroupName: gname };
-    db.collection('groups').find(myquery).toArray(function (err, result) {
-      if (err) throw err;
-      console.log("cname: " + cname);
-      
-      for (i = 0; i < result[0].Channel.length; i++) {
-        if (result[0].Channel[i].name == cname) {
-          ChannelInGroup = true;
+        for (i = 0; i < result[0].Channel.length; i++) {
+          if (result[0].Channel[i].name == cname) {
+            ChannelInGroup = true;
+          }
         }
-      }
-      console.log("ChannelInGroup: "+ChannelInGroup);
-      
-      if (ChannelInGroup == false) {
-        var newresult = result[0].Channel;
-        newresult.push({ name: cname, user: [] });
-        console.log(newresult)
-        var newvalues = { $set: { Channel: newresult } };
-        console.log(newvalues);
+        console.log("ChannelInGroup: " + ChannelInGroup);
 
-        db.collection("groups").updateOne(myquery, newvalues, function (err, result) {
-          if (err) throw err;
-          console.log("Group updated");
-          res.send(true);
-        });
-      } else {
-        res.send(false);
-      }
-    });
+        if (ChannelInGroup == false) {
+          var newresult = result[0].Channel;
+          newresult.push({ name: cname, user: [] });
+          console.log(newresult)
+          var newvalues = { $set: { Channel: newresult } };
+          console.log(newvalues);
+
+          db.collection("groups").updateOne(myquery, newvalues, function (err, result) {
+            if (err) throw err;
+            console.log("Group updated");
+            res.send(true);
+          });
+        } else {
+          res.send(false);
+        }
+      });
+    } else {
+      res.send(false);
+    }
   });
 }
