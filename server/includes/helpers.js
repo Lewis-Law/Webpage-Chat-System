@@ -37,5 +37,15 @@ module.exports = {
       err.push('Password is not defined')
     }
     return { 'errors': err };
+  },
+  // Create Group
+  createGroup: function (gname) {
+    let err = [];
+    if (gname == "" || gname == undefined || gname == null) {
+      err.push('Group Name is not defined')
+    }
+    return { 'errors': err };
   }
 }
+
+

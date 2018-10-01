@@ -75,3 +75,13 @@ describe('Auth User Function - Missing data param 2', function () {
     assert.equal(helpers.auth("a", null).errors[0], 'Password is not defined');
   });
 });
+
+// Create Group
+describe('Create Group Function - Missing data param 1', function () {
+  it('null - should have one error message', function () {
+    assert.equal(helpers.createGroup(null).errors.length, 1);
+  });
+  it('Error Message is - Group Name is not defined', function () {
+    assert.equal(helpers.createGroup(null).errors[0], 'Group Name is not defined');
+  });
+});
