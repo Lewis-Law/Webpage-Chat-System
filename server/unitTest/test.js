@@ -47,6 +47,12 @@ describe('Register User Function - Missing data param 4', function () {
   });
 });
 
+describe('Register User Function - Missing all params', function () {
+  it('null, null, null ,null - should have four error message', function () {
+    assert.equal(helpers.register(null, null, null ,null).errors.length, 4);
+  });
+});
+
 // Delete user
 describe('Delete User Function - Missing data param 1', function () {
   it('null - should have one error message', function () {
@@ -54,6 +60,12 @@ describe('Delete User Function - Missing data param 1', function () {
   });
   it('Error Message is - Name is not defined', function () {
     assert.equal(helpers.delete(null).errors[0], 'Name is not defined');
+  });
+});
+
+describe('Delete User Function - Missing all params', function () {
+  it('null - should have one error message', function () {
+    assert.equal(helpers.delete(null).errors.length, 1);
   });
 });
 
@@ -73,6 +85,12 @@ describe('Auth User Function - Missing data param 2', function () {
   });
   it('Error Message is - Password is not defined', function () {
     assert.equal(helpers.auth("a", null).errors[0], 'Password is not defined');
+  });
+});
+
+describe('Auth User Function - Missing all params', function () {
+  it('null, null - should have two error message', function () {
+    assert.equal(helpers.auth(null, null).errors.length, 2);
   });
 });
 
@@ -96,6 +114,7 @@ describe('Delete Group Function - Missing data param 1', function () {
   });
 });
 
+
 // Add User to Group
 describe('Add user to Group Function - Missing data param 1', function () {
   it('null, "a" - should have one error message', function () {
@@ -112,6 +131,12 @@ describe('Add user to Group Function - Missing data param 2', function () {
   });
   it('Error Message is - Username is not defined', function () {
     assert.equal(helpers.addUserToGroup("a", null).errors[0], 'Username is not defined');
+  });
+});
+
+describe('Add user to Group Function - Missing all params', function () {
+  it('null, null - should have two error message', function () {
+    assert.equal(helpers.addUserToGroup(null, null).errors.length, 2);
   });
 });
 
@@ -134,6 +159,12 @@ describe('Delete User from Group Function - Missing data param 2', function () {
   });
 });
 
+describe('Delete User from Group Function - Missing all params', function () {
+  it('null, null, null - should have two error message', function () {
+    assert.equal(helpers.deleteUserFromGroup(null, null).errors.length, 2);
+  });
+});
+
 // Create Channel
 describe('Create Channel Function - Missing data param 1', function () {
   it('null, "a" - should have one error message', function () {
@@ -153,6 +184,11 @@ describe('Create Channel Function - Missing data param 2', function () {
   });
 });
 
+describe('Create Channel Function - Missing all params', function () {
+  it('null, null - should have two error message', function () {
+    assert.equal(helpers.createChannel(null, null).errors.length, 2);
+  });
+});
 // Delete Channel
 describe('Delete Channel Function - Missing data param 1', function () {
   it('null, "a" - should have one error message', function () {
@@ -169,6 +205,12 @@ describe('Delete Channel Function - Missing data param 2', function () {
   });
   it('Error Message is - Channel Name is not defined', function () {
     assert.equal(helpers.deleteChannel("a", null).errors[0], 'Channel Name is not defined');
+  });
+});
+
+describe('Delete Channel Function - Missing all params', function () {
+  it('null, null - should have two error message', function () {
+    assert.equal(helpers.deleteChannel(null, null).errors.length, 2);
   });
 });
 
@@ -200,7 +242,11 @@ describe('Add User To Channel Function - Missing data param 3', function () {
   });
 });
 
-
+describe('Add User To Channel Function - Missing all params', function () {
+  it('null, null, null - should have three error message', function () {
+    assert.equal(helpers.addUserToChannel(null, null, null).errors.length, 3);
+  });
+});
 // Delete User From Channel
 describe('Delete User From Channel Function - Missing data param 1', function () {
   it('null, "a" - should have one error message', function () {
@@ -229,3 +275,8 @@ describe('Delete User From Channel Function - Missing data param 3', function ()
   });
 });
 
+describe('Delete User From Channel Function - Missing all params', function () {
+  it('null, null, null - should have three error message', function () {
+    assert.equal(helpers.deleteUserFromChannel(null, null, null).errors.length, 3);
+  });
+});
