@@ -2,16 +2,16 @@ module.exports = function (app, io) {
   console.log("Server Socket Initialised");
   io.on('connection', (socket) => {
 
-  console.log('user connection');
+    console.log('user connection');
 
-  socket.on('disconnect', function () {
-    console.log('user disconnection');
-  });
+    socket.on('disconnect', function () {
+      console.log('user disconnection');
+    });
 
     
-  socket.on('add-message', (message) =>{
-    io.emit('message', { type: 'message', text: message });
-    });
+    socket.on('add-message', (message) =>{
+      io.emit('message', { type: 'message', text: message });
+      });
 
     socket.on('add-image', (image) => {
       io.emit('image', { type: 'image', text: image });

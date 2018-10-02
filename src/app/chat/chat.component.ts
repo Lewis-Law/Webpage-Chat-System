@@ -17,7 +17,8 @@ const httpOptions = {
 export class ChatComponent implements OnInit {
   username: string;
   messages = [];
-  message;
+  message='';
+  messageRetreived;
   connection;
   messagesArr = [];
   image;
@@ -47,13 +48,14 @@ export class ChatComponent implements OnInit {
       // retreive messages
       console.log("Session started for: " + this.username);
       this.connection = this.sockServ.getMessages().subscribe(message => {
-        this.message = message;
+        this.messageRetreived = message;
         message = ''
       });
+      // retreive profile image
       this.connection = this.sockServ.getImages().subscribe(image => {
-        this.messages.push({ message: this.message, image: image });        
+        this.messages.push({ message: this.messageRetreived, image: image });        
         image = '';
-        this.message =''
+        this.messageRetreived =''
         console.log(this.messages);
       });
     }
