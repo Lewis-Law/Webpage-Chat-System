@@ -47,16 +47,15 @@ export class ChatComponent implements OnInit {
       // retreive messages
       console.log("Session started for: " + this.username);
       this.connection = this.sockServ.getMessages().subscribe(message => {
-        this.connection = this.sockServ.getImages().subscribe(image => {
-          console.log(message);
-          this.messages.push({ message: message, image: image });
-          console.log(this.messages);
-          this.message = '';
-          this.image = '';
-        });
-        
+        this.message = message;
+        message = ''
       });
-
+      this.connection = this.sockServ.getImages().subscribe(image => {
+        this.messages.push({ message: this.message, image: image });        
+        image = '';
+        this.message =''
+        console.log(this.messages);
+      });
     }
   }
 
