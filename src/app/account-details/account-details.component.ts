@@ -38,11 +38,6 @@ export class AccountDetailsComponent implements OnInit {
               this.userArr = data[i]
               console.log('data');
               console.log(this.userArr);
-              if (data[i].image.length > 0) {
-                this.userImage = true;
-              } else {
-                this.userImage = false;
-              }
             }
           }
         });

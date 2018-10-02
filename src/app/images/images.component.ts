@@ -28,6 +28,15 @@ export class ImagesComponent implements OnInit {
       this.router.navigateByUrl('login');
     } else {
       this.username = sessionStorage.getItem('username');
+      this.httpClient.get(this.apiURL + 'user/read')
+        .subscribe((data: any) => {
+          for (var i = 0; i < data.length; i++) {
+            if (data[i].username == this.username) {
+              this.imagepath = data[i].image
+
+            }
+          }
+        });
     }
   }
 
