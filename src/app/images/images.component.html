@@ -2,9 +2,11 @@
   <h1>Profile Picture Upload</h1>
   <form>
     <div class="form-group">
-      <input type="file" class="form-control" (change)="onFileSelected($event)" name="uploadfile" id="uploadfile" />
+      <input type="file" (change)="onFileSelected($event)" name="uploadfile" id="uploadfile" />
     </div>
     <button class="btn btn-primary" type="button" (click)="onUpload()">Submit</button>
   </form>
+  <br />
+  <p>Profile picture:</p>
   <img src="./server/userimages/{{imagepath}}" />
 </div>
