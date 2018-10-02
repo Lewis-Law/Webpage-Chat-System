@@ -1,5 +1,5 @@
 # Assignment 2
-Git hub clone link: https://github.com/s5052799/Assignment.git
+Git hub clone link: https://github.com/s5052799/assignment2.git
 
 # How to start the application
 To start the server: “cd server” then “node server.js” (port 3000)
