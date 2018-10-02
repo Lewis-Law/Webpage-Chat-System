@@ -11,7 +11,11 @@ module.exports = function (app, io) {
     
   socket.on('add-message', (message) =>{
     io.emit('message', { type: 'message', text: message });
-  });
+    });
+
+    socket.on('add-image', (image) => {
+      io.emit('image', { type: 'image', text: image });
+    });
 
   });
 }

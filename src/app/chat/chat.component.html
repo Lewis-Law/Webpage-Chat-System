@@ -4,6 +4,8 @@
 <button (click)="sendMessage()">Send</button>
 <div class="messages">
   <div *ngFor="let message of messages" class="messages">
-    {{message.text}}
+    <img src="./server/userimages/{{message.image.text.image}}" />
+    {{message.message.text}}
+
   </div>
 </div>
