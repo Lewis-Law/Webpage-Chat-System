@@ -28,6 +28,7 @@ export class ImagesComponent implements OnInit {
       this.router.navigateByUrl('login');
     } else {
       this.username = sessionStorage.getItem('username');
+      // obtain profile image
       this.httpClient.get(this.apiURL + 'user/read')
         .subscribe((data: any) => {
           for (var i = 0; i < data.length; i++) {
@@ -39,12 +40,13 @@ export class ImagesComponent implements OnInit {
         });
     }
   }
-
+  // assign image name to variable when selected
   onFileSelected(event) {
     console.log(event);
     this.selectedfile = event.target.files[0];
   }
 
+  // upload image function
   imageObj: any = { };
   onUpload() {
     const fd = new FormData();

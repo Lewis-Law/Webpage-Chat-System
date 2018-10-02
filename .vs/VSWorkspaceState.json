@@ -3,15 +3,14 @@
     "",
     "\\server",
     "\\server\\routes",
-    "\\server\\routes\\channel",
-    "\\server\\routes\\group",
-    "\\server\\routes\\image",
-    "\\server\\routes\\user",
-    "\\src",
     "\\src\\app",
     "\\src\\app\\account-details",
-    "\\src\\app\\images"
+    "\\src\\app\\admin",
+    "\\src\\app\\chat",
+    "\\src\\app\\database",
+    "\\src\\app\\images",
+    "\\src\\app\\login"
   ],
-  "SelectedNode": "\\server\\routes\\user\\registerUser.js",
+  "SelectedNode": "\\server\\server.js",
   "PreviewInSolutionExplorer": false
 }

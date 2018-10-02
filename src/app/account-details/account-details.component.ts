@@ -30,6 +30,7 @@ export class AccountDetailsComponent implements OnInit {
       alert("User not logged in");
       this.router.navigateByUrl('login');
     } else {
+      // obtain user and group data
       this.username = sessionStorage.getItem('username');
       this.httpClient.get(this.apiURL + 'user/read')
         .subscribe((data: any) => {

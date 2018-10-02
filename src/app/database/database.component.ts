@@ -34,10 +34,12 @@ export class DatabaseComponent implements OnInit {
       } else {
         this.admin = false;
       }
+      // obtain user data
       this.httpClient.get(this.apiURL + 'user/read')
         .subscribe((data: any) => {
             this.userArr = data
         });
+      // obtain group data
       this.httpClient.get(this.apiURL + 'group/read')
         .subscribe((data: any) => {
           this.groupArr = data;

@@ -26,6 +26,7 @@ export class ChatComponent implements OnInit {
   private apiURL = 'http://localhost:3000/api/';
   userArr = [];
   ngOnInit() {
+    //determine if user is logged in
     if (!sessionStorage.getItem('username')) {
       console.log('Not validated');
       sessionStorage.clear();
@@ -42,6 +43,8 @@ export class ChatComponent implements OnInit {
             }
           }
         });
+
+      // retreive messages
       console.log("Session started for: " + this.username);
       this.connection = this.sockServ.getMessages().subscribe(message => {
         this.connection = this.sockServ.getImages().subscribe(image => {
@@ -58,7 +61,7 @@ export class ChatComponent implements OnInit {
   }
 
 
-
+  // send chat message
   sendMessage() {
     this.sockServ.sendMessage(this.username + ' says: ' + this.message);
     this.sockServ.sendImage(this.userArr);

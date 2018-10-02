@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
   userObj: any = {};
 
   role: string;
+  // log in function
   loginUser(event) {
     event.preventDefault();
     if (this.username != undefined && this.username.trim() != '' && this.password != undefined && this.password.trim() != '') {
