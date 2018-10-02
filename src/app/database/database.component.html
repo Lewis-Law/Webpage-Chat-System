@@ -1,0 +1,32 @@
+<body *ngIf="admin">
+  <h1>Users:</h1>
+  <div>
+    <p *ngFor="let user of userArr"><span>User: </span>{{user.username}}  <span>Email: </span> {{user.email}} <span>Role: </span> {{user.role}}</p>
+  </div>
+  <br />
+  <h1>Groups and Channels:</h1>
+  <div *ngFor="let group of groupArr">
+    <span>Group: </span> {{group.GroupName}}
+    <br />
+    <span>Users: </span>
+    <ng-container *ngFor="let user of group.User">
+      {{user}}
+    </ng-container>
+    <br />
+    <ng-container *ngFor="let channel of group.Channel">
+
+      <span>Channel:</span>
+      {{channel.name}}
+      <br />
+      <span>Users:</span>
+      <ng-container *ngFor="let channeluser of channel.user">
+        {{channeluser}}
+      </ng-container>
+      <br />
+    </ng-container>
+      <br /><br />
+</div>
+</body>
+<body *ngIf="!admin">
+  User does not have admin rights to view database.
+</body>

@@ -12,6 +12,7 @@ import { ChatComponent } from './chat/chat.component';
 import { AdminComponent } from './admin/admin.component';
 import { SocketService } from './services/socket/socket.service';
 import { ImagesComponent } from './images/images.component';
+import { DatabaseComponent } from './database/database.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ImagesComponent } from './images/images.component';
     AccountDetailsComponent,
     ChatComponent,
     AdminComponent,
-    ImagesComponent
+    ImagesComponent,
+    DatabaseComponent
   ],
   imports: [
     BrowserModule,
