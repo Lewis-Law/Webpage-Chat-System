@@ -1,5 +1,8 @@
 <h2>Welcome {{username}}</h2>
 <p>Role: {{userArr.role}}</p>
 <p>Email: {{userArr.email}}</p>
+<ng-container *ngIf="userImage">
+  <img src="./server/userimages/{{userArr.image}}" />
+</ng-container>
 <p>Groups And Channels</p>
 <p *ngFor="let elements of detailArr">{{elements}}</p>

@@ -7,7 +7,7 @@ module.exports = function (app, db, helpers) {
     var valid = null;
     valid = helpers.register(uname, upwd, uemail, urole);
     if (valid.errors.length == 0) {
-      var myobj = { username: uname, upwd: upwd, email: uemail, role: urole };
+      var myobj = { username: uname, upwd: upwd, email: uemail, role: urole, image: []};
       var isUser = 0;
 
       var query = { username: uname };

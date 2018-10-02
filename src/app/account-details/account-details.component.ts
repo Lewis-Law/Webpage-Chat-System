@@ -21,6 +21,7 @@ export class AccountDetailsComponent implements OnInit {
   userArr = [];
   groupArr = [];
   detailArr = [];
+  userImage: boolean;
   ngOnInit() {
     //determine if user logged in
     if (!sessionStorage.getItem('username')) {
@@ -34,8 +35,14 @@ export class AccountDetailsComponent implements OnInit {
         .subscribe((data: any) => {
           for (var i = 0; i < data.length; i++) {
             if (data[i].username == this.username) {
-              this.userArr=data[i]
+              this.userArr = data[i]
+              console.log('data');
               console.log(this.userArr);
+              if (data[i].image.length > 0) {
+                this.userImage = true;
+              } else {
+                this.userImage = false;
+              }
             }
           }
         });

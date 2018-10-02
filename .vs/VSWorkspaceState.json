@@ -2,11 +2,16 @@
   "ExpandedNodes": [
     "",
     "\\server",
+    "\\server\\routes",
+    "\\server\\routes\\channel",
+    "\\server\\routes\\group",
+    "\\server\\routes\\image",
     "\\server\\routes\\user",
-    "\\server\\unitTest",
+    "\\src",
     "\\src\\app",
-    "\\src\\app\\admin"
+    "\\src\\app\\account-details",
+    "\\src\\app\\images"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\server\\routes\\user\\registerUser.js",
   "PreviewInSolutionExplorer": false
 }
